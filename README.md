@@ -17,13 +17,13 @@
 - priority（string）
 - status（string）
 
-## Labelモデル
-### labelsテーブル
+## Task_labelモデル
+### task_labelsテーブル
 - id（integer）
 - task_id（integer）
 - label_id（integer）
 
-## Task_labelモデル
-### task_labelsテーブル
+## Labelモデル
+### labelsテーブル
 - id（integer）
-- label_name（string）
+- name（string）
