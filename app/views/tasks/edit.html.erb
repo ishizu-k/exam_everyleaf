@@ -1,0 +1,16 @@
+<h3>編集</h3>
+
+<%= form_with(model: @task, local: true) do |form| %>
+  <div class="task">
+    <%= form.label :タスク名 %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="task">
+    <%= form.label :詳細 %>
+    <%= form.text_area :content %>
+  </div>
+  <br>
+  <%= form.submit "編集"%>
+  <br>
+<% end %>
+<%= link_to '戻る', tasks_path %>
