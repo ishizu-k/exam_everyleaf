@@ -12,6 +12,7 @@
 ### tasksテーブル
 - id（integer）
 - user_id（integer）
+- name(string)
 - content（string）
 - limit（date）
 - priority（string）
