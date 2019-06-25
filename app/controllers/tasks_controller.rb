@@ -11,6 +11,7 @@ class TasksController < ApplicationController
 
   def create
     Task.create(task_params)
+    redirect_to tasks_path
   end
 
   def show
