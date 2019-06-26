@@ -1,4 +1,4 @@
-<h3>タスクの詳細</h3>
-<p>タスク: <%= @task.name %></p>
-<p>詳細: <%= @task.content %></p>
-<%= link_to '戻る', tasks_path %>
+<h3><%= t('task.content') %></h3>
+<p><%= t('task.name') %>: <%= @task.name %></p>
+<p><%= t('task.content') %>: <%= @task.content %></p>
+<%= link_to t('action.back'), tasks_path %>
