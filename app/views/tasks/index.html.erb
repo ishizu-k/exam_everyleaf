@@ -1,0 +1,19 @@
+<h3><%= t('task.list') %></h3>
+<p><%= flash[:success] %></p>
+<table>
+  <tr>
+    <th><%= t('task.name') %></th>
+    <th><%= t('task.content') %></th>
+  </tr>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.name %></td>
+      <td><%= task.content %></td>
+      <td><%= link_to t('action.show'), task_path(task.id) %></td>
+      <td><%= link_to t('action.edit'), edit_task_path(task.id) %></td>
+      <td><%= link_to t('action.delete'), task_path(task.id), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+  <%= link_to t('action.create'), new_task_path %>
+<%= t('view.sample') %>
