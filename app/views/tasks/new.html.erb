@@ -1,6 +1,16 @@
 <h3><%= t('action.create') %></h3>
 
 <%= form_with(model: @task, local: true) do |form| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="task">
     <%= form.label :name, t("task.name") %>
     <%= form.text_field :name %>
