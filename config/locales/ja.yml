@@ -10,8 +10,8 @@ ja:
       task: タスク
     attributes:
       task:
-        name: ブログ名
-        content: ブログ詳細
+        name: タスク名
+        content: タスク詳細
   date:
     abbr_day_names:
     - 日
