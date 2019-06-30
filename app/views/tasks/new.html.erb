@@ -19,6 +19,10 @@
     <%= form.label :content, t("task.content") %>
     <%= form.text_area :content %>
   </div>
+  <div class="task">
+    <%= form.label :limit, t("task.limit") %>
+    <%= form.date_field :limit %>
+  </div>
   <br>
   <%= form.submit t('action.create') %>
   <br>
