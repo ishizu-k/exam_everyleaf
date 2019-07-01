@@ -221,3 +221,5 @@ ja:
     edit: 編集
     delete: 削除
     back: 戻る
+  sort:
+    limit: 終了期限でソートする
