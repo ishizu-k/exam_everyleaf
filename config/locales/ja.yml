@@ -215,6 +215,7 @@ ja:
     content: タスク詳細
     limit: 終了期限
     list: タスク一覧
+    status: ステータス
   action:
     create: 新規作成
     show: 詳細
