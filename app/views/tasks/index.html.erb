@@ -4,16 +4,20 @@
   <tr>
     <th><%= t('task.name') %></th>
     <th><%= t('task.content') %></th>
+    <th><%= t('task.limit') %></th>
   </tr>
   <% @tasks.each do |task| %>
     <tr>
       <td><%= task.name %></td>
       <td><%= task.content %></td>
+      <td><%= task.limit %></td>
       <td><%= link_to t('action.show'), task_path(task.id) %></td>
       <td><%= link_to t('action.edit'), edit_task_path(task.id) %></td>
       <td><%= link_to t('action.delete'), task_path(task.id), method: :delete %></td>
     </tr>
   <% end %>
 </table>
-  <%= link_to t('action.create'), new_task_path %>
-<%= t('view.sample') %>
+<br>
+<%= link_to t('action.create'), new_task_path %>
+<br>
+<%= link_to t('sort.limit'), tasks_path(sort_expired: "true") %>

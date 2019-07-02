@@ -210,11 +210,10 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-  view:
-    sample: さんぷるサンプル
   task:
     name: タスク名
     content: タスク詳細
+    limit: 終了期限
     list: タスク一覧
   action:
     create: 新規作成
@@ -222,3 +221,5 @@ ja:
     edit: 編集
     delete: 削除
     back: 戻る
+  sort:
+    limit: 終了期限でソートする
