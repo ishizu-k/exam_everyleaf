@@ -12,6 +12,8 @@ ja:
       task:
         name: タスク名
         content: タスク詳細
+        limit: 終了期限
+        status: ステータス
   date:
     abbr_day_names:
     - 日
