@@ -5,7 +5,6 @@ class TasksController < ApplicationController
     if params[:task].nil?
       @tasks = Task.all.order(created_at: :desc)
     elsif params[:task][:search]
-      #binding.pry
       if params[:task][:name] && params[:task][:status].blank?
         @tasks = Task.where("name LIKE ?", "%#{ params[:task][:name] }%")
       elsif params[:task][:name].blank? && params[:task][:status]
@@ -14,7 +13,6 @@ class TasksController < ApplicationController
         @tasks = Task.where("name LIKE ? AND status LIKE ?", "%#{ params[:task][:name] }", "#{ params[:task][:status] }")
       end
     end
-
     if params[:sort_expired]
       @tasks = Task.all.order(limit: :desc)
     end
