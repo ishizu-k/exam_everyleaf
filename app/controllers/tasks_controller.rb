@@ -10,7 +10,7 @@ class TasksController < ApplicationController
       elsif params[:task][:name].blank? && params[:task][:status]
         @tasks = Task.search_status(params[:task][:status])
       elsif params[:task][:name] && params[:task][:status]
-        @tasks = Task.search_and(params[:task][:name], params[:task][:status])
+        @tasks = Task.search_task_name(params[:task][:name]).search_status(params[:task][:status])
       end
     end
     if params[:sort_expired]

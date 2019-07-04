@@ -7,5 +7,4 @@ class Task < ApplicationRecord
   scope :sort_expired, -> {order(limit: :desc)}
   scope :search_task_name, -> (params){where("name LIKE ?", "%#{ params }%")}
   scope :search_status, -> (params){where("status LIKE ?", "#{ params }%")}
-  scope :search_and, -> (params1, params2){where("name LIKE ? AND status LIKE ?", "%#{ params1 }", "#{ params2 }")}
 end
