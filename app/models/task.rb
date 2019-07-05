@@ -1,4 +1,10 @@
 class Task < ApplicationRecord
   validates :name, presence: true, length:  { maximum: 30 }
   validates :content, presence: true, length: { maximum: 500 }
+  validates :limit, presence: true
+  validates :status, presence: true
+  scope :task_index, -> {order(created_at: :desc)}
+  scope :sort_expired, -> {order(limit: :desc)}
+  scope :search_task_name, -> (params){where("name LIKE ?", "%#{ params }%")}
+  scope :search_status, -> (params){where("status LIKE ?", "#{ params }%")}
 end

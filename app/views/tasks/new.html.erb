@@ -23,6 +23,10 @@
     <%= form.label :limit, t("task.limit") %>
     <%= form.date_field :limit %>
   </div>
+  <div class="task">
+    <%= form.label :status, t("task.status") %>
+    <%= form.select :status, ["未着手", "着手", "完了"], prompt: "選択してください" %>
+  </div>
   <br>
   <%= form.submit t('action.create') %>
   <br>
