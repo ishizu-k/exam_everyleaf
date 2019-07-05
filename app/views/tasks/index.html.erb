@@ -1,16 +1,18 @@
-<h3><%= t('task.list') %></h3>
+<h3><%= link_to t('task.list'), tasks_path %></h3>
 <p><%= flash[:success] %></p>
 <table>
   <tr>
     <th><%= t('task.name') %></th>
     <th><%= t('task.content') %></th>
     <th><%= t('task.limit') %></th>
+    <th><%= t('task.status') %></th>
   </tr>
   <% @tasks.each do |task| %>
     <tr>
       <td><%= task.name %></td>
       <td><%= task.content %></td>
       <td><%= task.limit %></td>
+      <td><%= task.status %></td>
       <td><%= link_to t('action.show'), task_path(task.id) %></td>
       <td><%= link_to t('action.edit'), edit_task_path(task.id) %></td>
       <td><%= link_to t('action.delete'), task_path(task.id), method: :delete %></td>
@@ -21,4 +23,18 @@
 <%= link_to t('action.create'), new_task_path %>
 <br>
 <%= link_to t('sort.limit'), tasks_path(sort_expired: "true") %>
+<br>
 
+<%= form_with(model: Task.new, url: tasks_path, local: true, method: 'get') do |form| %>
+  <div class="task_search">
+    <%= form.label :name_search, t('action.name_search') %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="task_search">
+    <%= form.label :status_search, t('action.status_search') %>
+    <%= form.select :status, ["未着手", "着手", "完了"], include_blank: true, selected: '' %>
+  </div>
+  <br>
+  <%= form.hidden_field :search, value: 'true' %>
+  <%= form.submit "検索" %>
+<% end %>

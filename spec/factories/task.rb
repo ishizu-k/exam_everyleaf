@@ -5,6 +5,7 @@ FactoryBot.define do
     name { 'Factoryで作ったデフォルトのタイトル１' }
     content { 'Factoryで作ったデフォルトのコンテント１' }
     limit { '2022-08-31'}
+    status { '未着手' }
   end
 
   # 作成するテストデータの名前を「second_task」とします
@@ -13,5 +14,6 @@ FactoryBot.define do
     name { 'Factoryで作ったデフォルトのタイトル２' }
     content { 'Factoryで作ったデフォルトのコンテント２' }
     limit { '2019-08-31'}
+    status { '着手' }
   end
 end
