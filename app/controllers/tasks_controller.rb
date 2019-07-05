@@ -13,9 +13,7 @@ class TasksController < ApplicationController
         @tasks = Task.search_task_name(params[:task][:name]).search_status(params[:task][:status])
       end
     end
-    if params[:sort_expired]
-      @tasks = Task.all.sort_expired
-    end
+      @tasks = Task.all.sort_expired if params[:sort_expired]
   end
 
   def new
@@ -32,11 +30,9 @@ class TasksController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @task.update(task_params)
