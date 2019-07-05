@@ -224,5 +224,8 @@ ja:
     edit: 編集
     delete: 削除
     back: 戻る
+    search: 検索
+    name_search: タスク名から検索
+    status_search: ステータスから検索
   sort:
     limit: 終了期限でソートする
