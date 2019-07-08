@@ -7,4 +7,5 @@ class Task < ApplicationRecord
   scope :sort_expired, -> {order(limit: :desc)}
   scope :search_task_name, -> (params){where("name LIKE ?", "%#{ params }%")}
   scope :search_status, -> (params){where("status LIKE ?", "#{ params }%")}
+  enum priority: {高: 0, 中: 1, 低: 2}
 end
