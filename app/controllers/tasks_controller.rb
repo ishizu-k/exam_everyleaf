@@ -14,7 +14,7 @@ class TasksController < ApplicationController
       end
     end
       @tasks = Task.all.sort_expired if params[:sort_expired]
-      @tasks = Task.all.order(priority: :asc) if params[:sort_prioritized]
+      @tasks = Task.all.sort_prioritized if params[:sort_prioritized]
   end
 
   def new
