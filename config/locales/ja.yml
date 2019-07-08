@@ -236,3 +236,4 @@ ja:
     status_search: ステータスから検索
   sort:
     limit: 終了期限でソートする
+    priority: 優先順位でソートする
