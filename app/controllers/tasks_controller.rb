@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     if params[:task].nil?
-      @tasks = Task.all.task_index
+      @tasks = Task.page(params[:page]).per(10)
     elsif params[:task][:search]
       if params[:task][:name] && params[:task][:status].blank?
         @tasks = Task.search_task_name(params[:task][:name])
