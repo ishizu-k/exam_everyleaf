@@ -9,4 +9,5 @@ class Task < ApplicationRecord
   scope :search_status, -> (params){where("status LIKE ?", "#{ params }%")}
   scope :sort_prioritized, -> {order(priority: :asc)}
   enum priority: {高: 0, 中: 1, 低: 2}
+  paginates_per 10
 end
