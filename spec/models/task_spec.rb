@@ -60,4 +60,8 @@ RSpec.describe Task, type: :model do
     task2.save
     expect(Task.search_status(task2[:status])).to include task2
   end
+
+  it "sort_prioritizedスコープを使用し、優先順位が高い順にソートできる" do
+    expect(Task.all.sort_prioritized).to eq Task.all.order(priority: :asc)
+  end
 end
