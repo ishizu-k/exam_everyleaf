@@ -42,3 +42,5 @@
   <%= form.hidden_field :search, value: 'true' %>
   <%= form.submit "検索" %>
 <% end %>
+<br>
+<%= paginate @tasks %>
