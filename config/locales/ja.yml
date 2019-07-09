@@ -14,6 +14,12 @@ ja:
         content: タスク詳細
         limit: 終了期限
         status: ステータス
+  enums:
+    task:
+      priority:
+        high: 高
+        medium: 中
+        low: 低
   date:
     abbr_day_names:
     - 日
@@ -218,6 +224,7 @@ ja:
     limit: 終了期限
     list: タスク一覧
     status: ステータス
+    priority: 優先順位
   action:
     create: 新規作成
     show: 詳細
@@ -229,3 +236,4 @@ ja:
     status_search: ステータスから検索
   sort:
     limit: 終了期限でソートする
+    priority: 優先順位でソートする

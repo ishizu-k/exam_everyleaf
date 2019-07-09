@@ -14,6 +14,7 @@ class TasksController < ApplicationController
       end
     end
       @tasks = Task.all.sort_expired if params[:sort_expired]
+      @tasks = Task.all.sort_prioritized if params[:sort_prioritized]
   end
 
   def new
@@ -52,7 +53,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content, :limit, :sort_expired, :status, :search)
+    params.require(:task).permit(:name, :content, :limit, :sort_expired, :status, :search, :priority, :sort_prioritized)
   end
 
   def set_task

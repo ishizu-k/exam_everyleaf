@@ -27,6 +27,9 @@
     <%= form.label :status, t("task.status") %>
     <%= form.select :status, ["未着手", "着手", "完了"], prompt: "選択してください" %>
   </div>
+  <div class="task">
+    <%= form.label :priority, t("task.priority") %>
+    <%= form.select :priority, Task.priorities_i18n.keys.map {|k| [Task.priorities_i18n[k], k]} %>
   <br>
   <%= form.submit t('action.create') %>
   <br>
