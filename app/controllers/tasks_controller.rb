@@ -3,18 +3,18 @@ class TasksController < ApplicationController
 
   def index
     if params[:task].nil?
-      @tasks = Task.page(params[:page]).per(10)
+      @tasks = Task.page(params[:page])
     elsif params[:task][:search]
       if params[:task][:name] && params[:task][:status].blank?
-        @tasks = Task.search_task_name(params[:task][:name])
+        @tasks = Task.search_task_name(params[:task][:name]).page(params[:page])
       elsif params[:task][:name].blank? && params[:task][:status]
-        @tasks = Task.search_status(params[:task][:status])
+        @tasks = Task.search_status(params[:task][:status]).page(params[:page])
       elsif params[:task][:name] && params[:task][:status]
-        @tasks = Task.search_task_name(params[:task][:name]).search_status(params[:task][:status])
+        @tasks = Task.search_task_name(params[:task][:name]).search_status(params[:task][:status]).page(params[:page])
       end
     end
-      @tasks = Task.all.sort_expired if params[:sort_expired]
-      @tasks = Task.all.sort_prioritized if params[:sort_prioritized]
+      @tasks = Task.all.sort_expired.page(params[:page]) if params[:sort_expired]
+      @tasks = Task.all.sort_prioritized.page(params[:page]) if params[:sort_prioritized]
   end
 
   def new
