@@ -1,12 +1,16 @@
+<div class="container">
 <h3><%= link_to t('task.list'), tasks_path %></h3>
 <p><%= flash[:success] %></p>
-<table>
+<table class="table table-hover">
   <tr>
-    <th><%= t('task.name') %></th>
-    <th><%= t('task.content') %></th>
-    <th><%= t('task.limit') %></th>
-    <th><%= t('task.status') %></th>
-    <th><%= t('task.priority') %></th>
+    <th class="col-md-2"><%= t('task.name') %></th>
+    <th class="col-md-3"><%= t('task.content') %></th>
+    <th class="col-md-2"><%= t('task.limit') %></th>
+    <th class="col-md-1"><%= t('task.status') %></th>
+    <th class="col-md-1"><%= t('task.priority') %></th>
+    <th class="col-md-1"><%= t('action.show') %></th>
+    <th class="col-md-1"><%= t('action.edit') %></th>
+    <th class="col-md-1"><%= t('action.delete') %></th>
   </tr>
   <% @tasks.each do |task| %>
     <tr>
@@ -44,3 +48,4 @@
 <% end %>
 <br>
 <%= paginate @tasks %>
+</div>
