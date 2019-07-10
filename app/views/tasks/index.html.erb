@@ -11,18 +11,20 @@
       <%= form.submit "search" %>
     </div>
   <% end %>
-  <br><br>
+  <br>
   <table class="table table-hover">
-    <tr>
-      <th class="col-md-2"><%= t('task.name') %></th>
-      <th class="col-md-3"><%= t('task.content') %></th>
-      <th class="col-md-2"><%= t('task.limit') %></th>
-      <th class="col-md-1"><%= t('task.status') %></th>
-      <th class="col-md-1"><%= t('task.priority') %></th>
-      <th class="col-md-1"><%= t('action.show') %></th>
-      <th class="col-md-1"><%= t('action.edit') %></th>
-      <th class="col-md-1"><%= t('action.delete') %></th>
-    </tr>
+    <thead>
+      <tr>
+        <th class="col-md-2"><%= t('task.name') %></th>
+        <th class="col-md-4"><%= t('task.content') %></th>
+        <th class="col-md-1"><%= t('task.limit') %></th>
+        <th class="col-md-1"><%= t('task.status') %></th>
+        <th class="col-md-1"><%= t('task.priority') %></th>
+        <th class="col-md-1"><%= t('action.show') %></th>
+        <th class="col-md-1"><%= t('action.edit') %></th>
+        <th class="col-md-1"><%= t('action.delete') %></th>
+      </tr>
+    </thead>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.name %></td>
