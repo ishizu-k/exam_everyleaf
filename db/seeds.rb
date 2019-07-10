@@ -15,3 +15,9 @@
     priority: "中"
   )
 end
+
+User.create!(
+  name: "test",
+  email: "test@example.com",
+  password_digest: "111111"
+)
