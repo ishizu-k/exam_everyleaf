@@ -6,15 +6,22 @@
   padding: 10 20 20 20px;
 }
 
-.new_create tr {
-  height: 5rem
-}
-
 table {
   table-layout: fixed;
   word-wrap: break-word;
 }
 
+table tr {
+  height: 5rem;
+}
+
 .new_btns {
   margin: 20px 70px;
+}
+
+.show_btn {
+  margin: 40px 220px;
+}
+.row {
+  width: 500px;
 }
