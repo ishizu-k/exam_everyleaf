@@ -10,4 +10,5 @@ class Task < ApplicationRecord
   scope :sort_prioritized, -> {order(priority: :asc)}
   enum priority: {高: 0, 中: 1, 低: 2}
   paginates_per 10
+  belongs_to :user
 end

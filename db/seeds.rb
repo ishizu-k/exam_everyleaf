@@ -6,18 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-50.times do |i|
-  Task.create!(
-    name: "#{i}番目のタスク",
-    content: "#{i}番目のタスクの内容",
-    limit: "2019-07-28",
-    status: "着手",
-    priority: "中"
-  )
-end
 
-User.create!(
-  name: "test",
+
+User.create(
+  name: "test1",
   email: "test@example.com",
   password_digest: "111111"
+)
+
+
+Task.create(
+  name: "1番目のタスク",
+  content: "1番目のタスクの内容",
+  limit: "2019-07-28",
+  status: "着手",
+  priority: "中",
+  user_id: "1"
 )
