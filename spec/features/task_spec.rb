@@ -83,3 +83,6 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(Task.all.order(priority: :asc)).to eq [@task1, @task2]
   end
 end
+
+#テスト
+#bin/rspec spec/features/task_spec.rb
