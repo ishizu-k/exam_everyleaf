@@ -4,18 +4,18 @@ class TasksController < ApplicationController
 
   def index
     if params[:task].nil?
-      @tasks = Task.all.task_index.page(params[:page])
+      @tasks = current_user.tasks.task_index.page(params[:page])
     elsif params[:task][:search]
       if params[:task][:name] && params[:task][:status].blank?
-        @tasks = Task.search_task_name(params[:task][:name]).page(params[:page])
+        @tasks = current_user.tasks.search_task_name(params[:task][:name]).page(params[:page])
       elsif params[:task][:name].blank? && params[:task][:status]
-        @tasks = Task.search_status(params[:task][:status]).page(params[:page])
+        @tasks = current_user.tasks.search_status(params[:task][:status]).page(params[:page])
       elsif params[:task][:name] && params[:task][:status]
-        @tasks = Task.search_task_name(params[:task][:name]).search_status(params[:task][:status]).page(params[:page])
+        @tasks = current_user.tasks.search_task_name(params[:task][:name]).search_status(params[:task][:status]).page(params[:page])
       end
     end
-      @tasks = Task.all.sort_expired.page(params[:page]) if params[:sort_expired]
-      @tasks = Task.all.sort_prioritized.page(params[:page]) if params[:sort_prioritized]
+      @tasks = current_user.tasks.all.sort_expired.page(params[:page]) if params[:sort_expired]
+      @tasks = current_user.tasks.all.sort_prioritized.page(params[:page]) if params[:sort_prioritized]
   end
 
   def new
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to tasks_path
       flash[:success] = "新規作成しました"
