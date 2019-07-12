@@ -1,5 +1,8 @@
 <h1>Log in</h1>
-<p><%= flash[:danger] %></p>
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class:"#{key}") %>
+<% end %>
+
 <%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
   <table>
     <tr>
