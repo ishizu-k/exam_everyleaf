@@ -6,11 +6,11 @@
 <%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
   <table>
     <tr>
-      <th><%= form.label :email %></th>
+      <th><%= form.label :email, t("user.email") %></th>
       <td><%= form.email_field :email %></td>
     </tr>
     <tr>
-      <th><%= form.label :password %></th>
+      <th><%= form.label :password, t("user.password") %></th>
       <td><%= form.password_field :password %></td>
     </tr>
   </table>
