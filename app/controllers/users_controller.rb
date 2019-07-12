@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def new
-    if logged_in
-      redirect_to user_path(current_user.id)
-    end
+    redirect_to user_path(current_user.id) if logged_in
     @user = User.new
   end
 
@@ -18,6 +16,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if current_user != @user
+      redirect_to user_path(current_user.id)
+    end
   end
 
   private
