@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :login_task
 
   def index
     if params[:task].nil?
@@ -58,5 +59,11 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def login_task
+    unless logged_in
+      redirect_to new_session_path
+    end
   end
 end
