@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "ユーザー管理機能", type: :feature do
   background do
-    user1 = FactoryBot.create(:user)
-    user2 = FactoryBot.create(:second_user)
+    task1 = FactoryBot.create(:task)
+    task2 = FactoryBot.create(:second_task)
   end
 
   scenario "ユーザー新規登録" do
@@ -40,6 +40,13 @@ RSpec.feature "ユーザー管理機能", type: :feature do
   end
 
   scenario "未ログイン状態でタスクのページに飛ぼうとするとログインページに遷移する" do
+    visit tasks_path
+    expect(page).to have_selector 'h3', text: 'Log in'
+    visit new_task_path
+    expect(page).to have_selector 'h3', text: 'Log in'
+  end
+
+  scenario "自分が作成したタスクだけが表示される" do
     # ログインする
     visit new_session_path
     fill_in 'メールアドレス', with: 'tanaka@example.com'
@@ -55,25 +62,17 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     select '未着手', from: 'ステータス'
     select "高", from: '優先順位'
     click_button '新規作成'
+    # 自分が作成したタスクだけが表示される
     expect(page).to have_content 'test'
     expect(page).to have_content 'content'
     expect(page).to have_content '2029-07-07'
     expect(page).to have_content '未着手'
-    expect(page).to have_content 0
-    # ログアウトする
-    click_link "Log Out"
-    expect(page).to have_content 'ログアウトしました'
-    # 未ログイン状態ではタスクページに行けない
-    visit tasks_path
-    expect(page).to have_selector 'h3', text: 'Log in'
-    visit new_task_path
-    expect(page).to have_selector 'h3', text: 'Log in'
-    visit edit_task_path(1)
-    expect(page).to have_selector 'h3', text: 'Log in'
-    visit task_path(1)
-    expect(page).to have_selector 'h3', text: 'Log in'
+    expect(page).to have_content "高"
+    expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
+    expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
+    expect(page).to_not have_content 'Factoryで作ったデフォルトのタイトル２'
+    expect(page).to_not have_content 'Factoryで作ったデフォルトのコンテント２'
   end
-
 end
 
 # テスト
