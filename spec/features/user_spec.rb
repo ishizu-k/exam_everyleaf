@@ -16,6 +16,15 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     expect(page).to have_content 'name'
     expect(page).to have_content 'name@example.com'
   end
+
+  scenario "ログインする" do
+    visit new_session_path
+    fill_in 'メールアドレス', with: 'tanaka@example.com'
+    fill_in 'パスワード', with: '111111'
+    click_button 'Log in'
+    expect(page).to have_content 'tanaka'
+    expect(page).to have_content 'tanaka@example.com'
+  end
 end
 
 #テスト
