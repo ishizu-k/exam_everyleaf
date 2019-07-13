@@ -6,13 +6,15 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     task2 = FactoryBot.create(:second_task)
   end
 
-  scenario "ユーザー新規登録" do
+  scenario "ユーザー新規登録（同時にログイン）" do
+    # ユーザー新規登録
     visit new_user_path
     fill_in 'ユーザー名', with: 'name'
     fill_in 'メールアドレス', with: 'name@example.com'
     fill_in 'パスワード', with: '000000'
     fill_in '確認用パスワード', with: '000000'
     click_button 'Create my account'
+    # ログインしている
     expect(page).to have_content 'name'
     expect(page).to have_content 'name@example.com'
   end
@@ -70,8 +72,8 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     expect(page).to have_content "高"
     expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
     expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
+    expect(page).to have_content '2022-08-31'
     expect(page).to_not have_content 'Factoryで作ったデフォルトのタイトル２'
-    expect(page).to_not have_content 'Factoryで作ったデフォルトのコンテント２'
   end
 end
 
