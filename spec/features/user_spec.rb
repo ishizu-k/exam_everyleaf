@@ -75,6 +75,18 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     expect(page).to have_content '2022-08-31'
     expect(page).to_not have_content 'Factoryで作ったデフォルトのタイトル２'
   end
+
+  scenario "ログイン中、ユーザー登録画面に飛ぼうとするとマイページに遷移する" do
+    # ログインする
+    visit new_session_path
+    fill_in 'メールアドレス', with: 'tanaka@example.com'
+    fill_in 'パスワード', with: '111111'
+    click_button 'Log in'
+    # ユーザー登録画面に飛ぼうとするとマイページに遷移する
+    visit new_user_path
+    expect(page).to have_content 'tanaka'
+    expect(page).to have_content 'tanaka@example.com'
+  end
 end
 
 # テスト
