@@ -245,6 +245,8 @@ ja:
     back: 戻る
     search: 検索
     login: ログイン
+    name_search: タスク名から検索
+    status_search: ステータスから検索
   sort:
     limit: 終了期限でソートする
     priority: 優先順位でソートする
