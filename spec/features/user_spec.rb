@@ -87,6 +87,19 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     expect(page).to have_content 'tanaka'
     expect(page).to have_content 'tanaka@example.com'
   end
+
+    scenario "自分以外のマイページは表示されない" do
+      # ログインする
+      visit new_session_path
+      fill_in 'メールアドレス', with: 'tanaka@example.com'
+      fill_in 'パスワード', with: '111111'
+      click_button 'Log in'
+      # save_and_open_page
+      expect(page).to have_content 'tanaka'
+      expect(page).to have_content 'tanaka@example.com'
+      expect(page).to_not have_content 'yamada'
+      expect(page).to_not have_content 'yamada@example.com'
+    end
 end
 
 # テスト
