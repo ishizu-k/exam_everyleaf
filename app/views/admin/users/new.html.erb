@@ -1,0 +1,43 @@
+<div class="container">
+  <h3><%= t('action.create') %></h3>
+  <br>
+
+  <%= form_with(model: @task, local: true) do |form| %>
+    <% if @task.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <table class="new_create">
+      <tr>
+        <th class="col-md-2"><%= form.label :name, t("task.name") %></th>
+        <td><%= form.text_field :name %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= form.label :content, t("task.content") %></th>
+        <td><%= form.text_area :content %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= form.label :limit, t("task.limit") %></th>
+        <td><%= form.date_field :limit %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= form.label :status, t("task.status") %></th>
+        <td><%= form.select :status, ["未着手", "着手", "完了"], prompt: "選択してください" %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= form.label :priority, t("task.priority") %></th>
+        <td><%= form.select :priority, Task.priorities_i18n.keys.map {|k| [Task.priorities_i18n[k], k]} %></td>
+      </tr>
+    </table>
+    <div class="new_btns">
+      <%= link_to t('action.back'), tasks_path, class: 'btn btn-default' %>　
+      <%= form.submit t('action.create'), class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>

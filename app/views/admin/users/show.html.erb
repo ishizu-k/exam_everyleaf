@@ -1,0 +1,31 @@
+<div class="container">
+  <h3><%= t('task.content') %></h3>
+  <br>
+  <div class="row">
+    <table class="table table-bordered">
+      <tr>
+        <th class="col-md-2"><%= t("task.name") %></th>
+        <td class="col-md-6"><%= @task.name %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= t("task.content") %></th>
+        <td class="col-md-6"><%= @task.content %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= t("task.limit") %></th>
+        <td class="col-md-6"><%= @task.limit %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= t("task.status") %></th>
+        <td class="col-md-6"><%= @task.status %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= t("task.priority") %></th>
+        <td class="col-md-6"><%= @task.priority %></td>
+      </tr>
+    </table>
+    <div class="show_btn">
+      <%= link_to t('action.back'), tasks_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
