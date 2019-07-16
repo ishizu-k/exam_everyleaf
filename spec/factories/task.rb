@@ -5,6 +5,7 @@ FactoryBot.define do
     limit { '2022-08-31'}
     status { '未着手' }
     priority { 0 }
+    association :user
   end
 
   factory :second_task, class: Task do
@@ -13,5 +14,6 @@ FactoryBot.define do
     limit { '2019-08-31'}
     status { '着手' }
     priority { 1 }
+    association :user, factory: :second_user
   end
 end
