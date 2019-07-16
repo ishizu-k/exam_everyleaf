@@ -8,12 +8,18 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       task: タスク
+      user: ユーザー
     attributes:
       task:
         name: タスク名
         content: タスク詳細
         limit: 終了期限
         status: ステータス
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
   enums:
     task:
       priority:
@@ -225,6 +231,12 @@ ja:
     list: タスク一覧
     status: ステータス
     priority: 優先順位
+  user:
+    name: ユーザー名
+    email: メールアドレス
+    password: パスワード
+    password_confirmation: 確認用パスワード
+    show: マイページ
   action:
     create: 新規作成
     show: 詳細
@@ -232,6 +244,7 @@ ja:
     delete: 削除
     back: 戻る
     search: 検索
+    login: ログイン
     name_search: タスク名から検索
     status_search: ステータスから検索
   sort:
