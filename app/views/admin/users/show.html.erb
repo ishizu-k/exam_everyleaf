@@ -1,0 +1,24 @@
+<div class="container">
+  <h3><%= @user.name %><%= t('admin.show') %></h3>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="col-md-4"><%= t('task.name') %></th>
+        <th class="col-md-4"><%= t('task.content') %></th>
+        <th class="col-md-2"><%= t('task.limit') %></th>
+        <th class="col-md-1"><%= t('task.status') %></th>
+        <th class="col-md-1"><%= t('task.priority') %></th>
+      </tr>
+    </thead>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.content %></td>
+        <td><%= task.limit %></td>
+        <td><%= task.status %></td>
+        <td><%= task.priority %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
