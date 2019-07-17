@@ -10,4 +10,8 @@ module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
   end
+
+  def admin_role
+    current_user.admin.blank?
+  end
 end
