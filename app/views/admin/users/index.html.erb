@@ -1,42 +1,27 @@
 <div class="container">
-  <h3><%= link_to t('task.list'), tasks_path %></h3>
+  <h3>ユーザー一覧</h3>
   <p><%= flash[:success] %></p>
   <br>
+  <%= link_to "ユーザー新規作成", new_admin_user_path %>
 
-  <%= form_with(model: Task.new, url: tasks_path, local: true, method: 'get') do |form| %>
-    <div class="task_search">
-      <%= form.text_field :name, placeholder: t('action.name_search') %>　
-      <%= form.select :status, ["未着手", "着手", "完了"], prompt: t('action.status_search') %>　
-      <%= form.hidden_field :search, value: 'true' %>
-      <%= form.submit "search" %>
-    </div>
-  <% end %>
-  <br>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th class="col-md-2"><%= t('task.name') %></th>
-        <th class="col-md-4"><%= t('task.content') %></th>
-        <th class="col-md-1"><%= t('task.limit') %></th>
-        <th class="col-md-1"><%= t('task.status') %></th>
-        <th class="col-md-1"><%= t('task.priority') %></th>
-        <th class="col-md-1"><%= t('action.show') %></th>
-        <th class="col-md-1"><%= t('action.edit') %></th>
-        <th class="col-md-1"><%= t('action.delete') %></th>
+        <th class="col-md-4">ユーザー名</th>
+        <th class="col-md-2">タスク数</th>
+        <th class="col-md-2"><%= t('action.show') %></th>
+        <th class="col-md-2"><%= t('action.edit') %></th>
+        <th class="col-md-2"><%= t('action.delete') %></th>
       </tr>
     </thead>
-    <% @tasks.each do |task| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= task.name %></td>
-        <td><%= task.content %></td>
-        <td><%= task.limit %></td>
-        <td><%= task.status %></td>
-        <td><%= task.priority %></td>
-        <td><%= link_to t('action.show'), task_path(task.id) %></td>
-        <td><%= link_to t('action.edit'), edit_task_path(task.id) %></td>
-        <td><%= link_to t('action.delete'), task_path(task.id), method: :delete %></td>
+        <td><%= user.name %></td>
+        <td><%= user.tasks.length %></td>
+        <td><%= link_to t('action.show'), admin_user_path(user.id) %></td>
+        <td><%= link_to t('action.edit'), edit_admin_user_path(user.id) %></td>
+        <td><%= link_to t('action.delete'), admin_user_path(user.id), method: :delete %></td>
       </tr>
     <% end %>
   </table>
-  <%= paginate @tasks %>
 </div>

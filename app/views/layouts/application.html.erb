@@ -37,6 +37,7 @@
                 </li>
                 <li><%= link_to "Mypage", user_path(current_user.id) %></li>
                 <li><%= link_to "Log Out", session_path(current_user.id), method: :delete %></li>
+                <li><%= link_to "Admin", admin_users_path %></li>
               <% else %>
                 <li><a href="/sessions/new">Log In</a></li>
                 <li><a href="/users/new">Sign Up</a></li>

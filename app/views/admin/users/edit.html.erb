@@ -1,43 +1,36 @@
 <div class="container">
-  <h3><%= t('action.edit') %></h3>
+  <h3>ユーザー編集</h3>
   <br>
 
-  <%= form_with(model: @task, local: true) do |form| %>
-    <% if @task.errors.any? %>
+  <%= form_with(model: @user, local: true, url: admin_user_path(@user.id) ) do |form| %>
+    <% if @user.errors.any? %>
       <div id="error_explanation">
         <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
         </ul>
       </div>
     <% end %>
 
-    <table class="new_create">
+    <table>
       <tr>
-        <th class="col-md-2"><%= form.label :name, t("task.name") %></th>
+        <th><%= form.label :name, t("user.name") %></th>
         <td><%= form.text_field :name %></td>
       </tr>
       <tr>
-        <th class="col-md-2"><%= form.label :content, t("task.content") %></th>
-        <td><%= form.text_area :content %></td>
+        <th><%= form.label :email, t("user.email") %></th>
+        <td><%= form.email_field :email %></td>
       </tr>
       <tr>
-        <th class="col-md-2"><%= form.label :limit, t("task.limit") %></th>
-        <td><%= form.date_field :limit %></td>
+        <th><%= form.label :password, t("user.password") %></th>
+        <td><%= form.password_field :password %></td>
       </tr>
       <tr>
-        <th class="col-md-2"><%= form.label :status, t("task.status") %></th>
-        <td><%= form.select :status, ["未着手", "着手", "完了"] %></td>
-      </tr>
-      <tr>
-        <th class="col-md-2"><%= form.label :priority, t("task.priority") %></th>
-        <td><%= form.select :priority, Task.priorities_i18n.keys.map {|k| [Task.priorities_i18n[k], k]} %></td>
+        <th><%= form.label :password_confirmation, t("user.password_confirmation") %></th>
+        <td><%= form.password_field :password_confirmation %></td>
       </tr>
     </table>
-    <div class="new_btns">
-      <%= link_to t('action.back'), tasks_path, class: 'btn btn-default' %>　
-      <%= form.submit t('action.edit'), class: 'btn btn-default' %>
-    </div>
+    <br>
+    <%= form.submit "edit my account" %>
   <% end %>
-</div>
