@@ -231,12 +231,16 @@ ja:
     list: タスク一覧
     status: ステータス
     priority: 優先順位
+    count: タスク数
   user:
     name: ユーザー名
     email: メールアドレス
     password: パスワード
     password_confirmation: 確認用パスワード
     show: マイページ
+  admin:
+    list: ユーザー一覧
+    show: さんのタスク一覧
   action:
     create: 新規作成
     show: 詳細

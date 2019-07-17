@@ -100,6 +100,47 @@ RSpec.feature "ユーザー管理機能", type: :feature do
       expect(page).to_not have_content 'yamada'
       expect(page).to_not have_content 'yamada@example.com'
     end
+
+    scenario "ユーザー一覧が表示される" do
+      visit admin_users_path
+      expect(page).to have_content 'ユーザー一覧'
+    end
+
+    scenario "ユーザーの新規作成" do
+      visit new_admin_user_path
+      fill_in 'ユーザー名', with: 'name'
+      fill_in 'メールアドレス', with: 'name@example.com'
+      fill_in 'パスワード', with: '111111'
+      fill_in '確認用パスワード', with: '111111'
+      click_button 'Create'
+      expect(page).to have_content 'name'
+    end
+
+    scenario "ユーザーの更新" do
+      visit admin_users_path
+      page.all("td")[3].click_link '編集'
+      fill_in 'ユーザー名', with: 'sato'
+      fill_in 'メールアドレス', with: 'sato@example.com'
+      fill_in 'パスワード', with: '111111'
+      fill_in '確認用パスワード', with: '111111'
+      click_button 'Edit'
+      expect(page).to have_content '編集しました'
+      expect(page).to have_content 'sato'
+    end
+
+    scenario "ユーザーの削除" do
+      visit admin_users_path
+      page.all("td")[4].click_link '削除'
+      expect(page).to have_content '削除しました'
+    end
+
+    scenario "ユーザーごとに作成したタスク一覧が表示される" do
+      visit admin_users_path
+      page.all("td")[2].click_link '詳細'
+      expect(page).to have_content 'tanakaさんのタスク一覧'
+      expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
+      expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
+    end
 end
 
 # テスト
