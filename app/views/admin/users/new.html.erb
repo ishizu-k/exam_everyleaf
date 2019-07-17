@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>ユーザー新規作成</h3>
+  <h3><%= t('action.create') %></h3>
   <br>
 
   <%= form_with(model: @user, local: true, url: admin_users_path ) do |form| %>
@@ -32,5 +32,5 @@
       </tr>
     </table>
     <br>
-    <%= form.submit "Create my account" %>
+    <%= form.submit "Create" %>
   <% end %>
