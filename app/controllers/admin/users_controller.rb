@@ -3,6 +3,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.all
+    # @users = User.all.includes(:tasks)
   end
 
   def new
