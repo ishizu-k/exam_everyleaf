@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :user_task, only: [:show, :edit, :update, :destroy]
-  before_action :user_role
+  #before_action :not_admin_user
 
   def index
     @users = User.all.includes(:tasks)
@@ -37,9 +37,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_path
-    flash[:success] = "削除しました"
+    if @user.destroy
+       redirect_to admin_users_path
+       flash[:success] = "削除しました"
+     else
+       redirect_to admin_users_path
+       flash[:danger] = "管理ユーザーは1人以上必要です"
+     end
   end
 
   private
@@ -52,7 +56,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def user_role
+  def not_admin_user
     if admin_role
       # あとで専用エラーに変更する
       redirect_to new_session_path
