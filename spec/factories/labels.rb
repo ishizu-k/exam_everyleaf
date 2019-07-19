@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :lavel do
+  factory :label do
     name { "MyString" }
   end
 end

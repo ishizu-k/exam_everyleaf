@@ -1,2 +1,0 @@
-class Lavel < ApplicationRecord
-end
