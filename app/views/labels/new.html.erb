@@ -1,0 +1,28 @@
+<div class="container">
+  <h3><%= t('action.create') %></h3>
+  <br>
+
+  <%= form_with(model: @label, local: true) do |form| %>
+    <% if @label.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @label.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <table class="new_create">
+      <tr>
+        <th class="col-md-2"><%= form.label :name, "ラベル名" %></th>
+        <td><%= form.text_field :name %></td>
+      </tr>
+      <tr>
+    </table>
+    <div class="new_btns">
+      <%= link_to t('action.back'), admin_users_path, class: 'btn btn-default' %>　
+      <%= form.submit t('action.create'), class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>
