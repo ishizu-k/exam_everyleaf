@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :user_task, only: [:show, :edit, :update, :destroy]
   before_action :login_task
-  before_action :not_admin_user
+  before_action :admin_role
 
   def index
     @users = User.all.includes(:tasks)
@@ -63,11 +63,14 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def not_admin_user
-    if admin_role
-      # あとで専用エラーページ（403）を作成する
-      redirect_to new_session_path
+  def admin_role
+    if current_user.admin?
+      redirect_to admin_users_path
+    else
+      render "sessions/new"
+      # errors.add(:admin, "権限がありません")
       flash[:danger] = "権限がありません"
     end
   end
+
 end
