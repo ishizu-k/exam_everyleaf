@@ -60,14 +60,13 @@ class Admin::UsersController < ApplicationController
   def login_task
     unless logged_in
       redirect_to new_session_path
+      flash[:danger] = "権限がありません"
     end
   end
 
   def admin_role
-    if current_user.admin?
-      redirect_to admin_users_path
-    else
-      render "sessions/new"
+    unless current_user.admin?
+      render new_session_path
       # errors.add(:admin, "権限がありません")
       flash[:danger] = "権限がありません"
     end
