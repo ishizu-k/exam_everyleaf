@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :user_task, only: [:show, :edit, :update, :destroy]
   before_action :login_task
-  # before_action :admin_role
+  before_action :admin_role
 
   def index
     @users = User.all.includes(:tasks)
