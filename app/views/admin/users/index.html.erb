@@ -1,6 +1,9 @@
 <div class="container">
   <h3><%= t('admin.list') %></h3>
-  <p><%= flash[:success] %></p>
+  <br>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
   <br>
   <%= link_to t('action.create'), new_admin_user_path %>
 
