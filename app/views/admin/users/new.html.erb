@@ -30,6 +30,13 @@
         <th><%= form.label :password_confirmation, t("user.password_confirmation") %></th>
         <td><%= form.password_field :password_confirmation %></td>
       </tr>
+      <tr>
+        <th><%= form.label :admin, "管理者権限" %></th>
+        <td>
+          <label><%= form.radio_button :admin, true %>　有り</label>　　
+          <label><%= form.radio_button :admin, false %>　無し</label>
+        </td>
+      </tr>
     </table>
     <br>
     <%= form.submit "Create" %>
