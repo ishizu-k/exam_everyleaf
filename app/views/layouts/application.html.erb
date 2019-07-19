@@ -25,7 +25,7 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <% if logged_in %>
+              <% if logged_in && current_user.admin? %>
                 <li><a href="/tasks">List</a></li>
                 <li><a href="/tasks/new">New</a></li>
                 <li class="dropdown">
@@ -38,6 +38,18 @@
                 <li><%= link_to "Mypage", user_path(current_user.id) %></li>
                 <li><%= link_to "Log Out", session_path(current_user.id), method: :delete %></li>
                 <li><%= link_to "Admin", admin_users_path %></li>
+              <% elsif logged_in %>
+                <li><a href="/tasks">List</a></li>
+                <li><a href="/tasks/new">New</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/tasks?sort_expired=true">終了期限</a></li>
+                    <li><a href="/tasks?sort_prioritized=true">優先順位</a></li>
+                  </ul>
+                </li>
+                <li><%= link_to "Mypage", user_path(current_user.id) %></li>
+                <li><%= link_to "Log Out", session_path(current_user.id), method: :delete %></li>
               <% else %>
                 <li><a href="/sessions/new">Log In</a></li>
                 <li><a href="/users/new">Sign Up</a></li>
