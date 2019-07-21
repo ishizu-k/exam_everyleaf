@@ -34,6 +34,15 @@
         <th class="col-md-2"><%= form.label :priority, t("task.priority") %></th>
         <td><%= form.select :priority, Task.priorities_i18n.keys.map {|k| [Task.priorities_i18n[k], k]} %></td>
       </tr>
+      <tr>
+        <th class="col-md-2">ラベル</th>
+        <td>
+          <% Label.all.each do |label| %>
+            <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+            <%= label.name %>
+          <% end %>
+        </td>
+      </tr>
     </table>
     <div class="new_btns">
       <%= link_to t('action.back'), tasks_path, class: 'btn btn-default' %>　

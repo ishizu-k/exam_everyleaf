@@ -16,7 +16,8 @@
     <thead>
       <tr>
         <th class="col-md-2"><%= t('task.name') %></th>
-        <th class="col-md-4"><%= t('task.content') %></th>
+        <th class="col-md-2"><%= t('task.content') %></th>
+        <th class="col-md-2">ラベル</th>
         <th class="col-md-1"><%= t('task.limit') %></th>
         <th class="col-md-1"><%= t('task.status') %></th>
         <th class="col-md-1"><%= t('task.priority') %></th>
@@ -29,6 +30,11 @@
       <tr>
         <td><%= task.name %></td>
         <td><%= task.content %></td>
+        <td>
+          <% task.labels.each do |label| %>
+            <%= label.name %>
+          <% end %>
+        </td>
         <td><%= task.limit %></td>
         <td><%= task.status %></td>
         <td><%= task.priority %></td>
