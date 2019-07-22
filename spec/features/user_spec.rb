@@ -136,7 +136,6 @@ RSpec.feature "ユーザー管理機能", type: :feature do
       click_button 'Log in'
       # 管理画面
       visit admin_users_path
-      save_and_open_page
       page.all("td")[3].click_link '編集'
       fill_in 'ユーザー名', with: 'sato'
       fill_in 'メールアドレス', with: 'sato@example.com'
@@ -148,8 +147,24 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     end
 
     scenario "ユーザーの削除" do
+      # ログインする
+      visit new_session_path
+      fill_in 'メールアドレス', with: 'tanaka@example.com'
+      fill_in 'パスワード', with: '111111'
+      click_button 'Log in'
+      # 管理画面
       visit admin_users_path
-      page.all("td")[4].click_link '削除'
+      # 管理権限のあるユーザーを作成
+      visit new_admin_user_path
+      fill_in 'ユーザー名', with: 'name'
+      fill_in 'メールアドレス', with: 'name@example.com'
+      fill_in 'パスワード', with: '111111'
+      fill_in '確認用パスワード', with: '111111'
+      choose "有り"
+      click_button 'Create'
+      # 削除する
+      visit admin_users_path
+      page.all("td")[14].click_link '削除'
       expect(page).to have_content '削除しました'
     end
 
