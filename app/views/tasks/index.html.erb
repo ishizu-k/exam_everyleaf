@@ -27,7 +27,7 @@
         <th class="col-md-1"><%= t('action.delete') %></th>
       </tr>
     </thead>
-    <% @tasks.each do |task| %>
+    <% @tasks.includes([:labels], [:labels]).each do |task| %>
       <tr>
         <td><%= task.name %></td>
         <td><%= task.content %></td>
