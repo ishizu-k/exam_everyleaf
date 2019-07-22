@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Task, type: :model do
   it "nameが空ならバリデーションが通らない" do
     task = Task.new(name: '', content: '失敗テスト', limit: Date.today+1, status: '未着手')
+    # task = FactoryBot.create(:task, name: '')
     expect(task).not_to be_valid
   end
 
@@ -12,7 +13,7 @@ RSpec.describe Task, type: :model do
   end
 
   it "nameとcontentに内容が記載されていればバリデーションが通る" do
-    task = Task.new(name: '成功テスト', content: '成功テスト', limit: Date.today+1, status: '未着手')
+    task = FactoryBot.create(:task, name: '成功テスト')
     expect(task).to be_valid
   end
 
@@ -27,7 +28,8 @@ RSpec.describe Task, type: :model do
   end
 
   it "nameの文字数30以下かつcontentの文字数500以下ならバリデーションが通る" do
-    task = Task.new(name: 'a'*30, content: 'a'*500, limit: Date.today+1, status: '未着手')
+    task = FactoryBot.create(:task, name: 'a'*30, content: 'a'*500)
+    # task = Task.new(name: 'a'*30, content: 'a'*500, limit: Date.today+1, status: '未着手')
     expect(task).to be_valid
   end
 
@@ -40,25 +42,23 @@ RSpec.describe Task, type: :model do
   end
 
   it "search_task_nameスコープを使用し、タスク名で検索できる" do
-    task1 = Task.new(name: 'test', content: 'hogehoge', limit: Date.today+1, status: '着手')
-    task1.save
-    expect(Task.search_task_name(task1[:name])).to include task1
-    # binding.pry
-    # expect(Task.search_task_name(task[:name])).to eq Task.where("name LIKE ?", "#{ task[:name] }")
-    # expect(Task.search_task_name(task[:name])).to include Task.where("name LIKE ?", "#{ task[:name] }")
-    # expect(Task.search_task_name(task[:name])).to eq task
-    task2 = Task.new(name: 'test2', content: 'hogehoge', limit: Date.today+1, status: '着手')
-    task2.save
-    expect(Task.search_task_name(task2[:name])).to include task2
+    task = FactoryBot.create(:task)
+    # task1 = Task.new(name: 'test', content: 'hogehoge', limit: Date.today+1, status: '着手')
+    # task1.save
+    expect(Task.search_task_name(task[:name])).to include task
+    # task2 = Task.new(name: 'test2', content: 'hogehoge', limit: Date.today+1, status: '着手')
+    # task2.save
+    # expect(Task.search_task_name(task2[:name])).to include task2
   end
 
   it "search_statusスコープを使用し、ステータスで検索できる" do
-    task1 = Task.new(name: 'test', content: 'hogehoge', limit: Date.today+1, status: '未着手')
-    task1.save
-    expect(Task.search_status(task1[:status])).to include task1
-    task2 = Task.new(name: 'test2', content: 'hogehoge', limit: Date.today+1, status: '着手')
-    task2.save
-    expect(Task.search_status(task2[:status])).to include task2
+    task = FactoryBot.create(:task)
+    # task1 = Task.new(name: 'test', content: 'hogehoge', limit: Date.today+1, status: '未着手')
+    # task1.save
+    # expect(Task.search_status(task1[:status])).to include task1
+    # task2 = Task.new(name: 'test2', content: 'hogehoge', limit: Date.today+1, status: '着手')
+    # task2.save
+    expect(Task.search_status(task[:status])).to include task
   end
 
   it "sort_prioritizedスコープを使用し、優先順位が高い順にソートできる" do

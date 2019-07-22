@@ -36,7 +36,6 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスク詳細のテスト" do
     visit tasks_path
-    save_and_open_page
     page.all("td")[6].click_link '詳細'
     expect(page).to have_content '付け加えた名前'
     expect(page).to have_content 'Factoryで作ったデフォルトのコンテント１'
