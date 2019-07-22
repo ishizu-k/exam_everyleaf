@@ -7,6 +7,7 @@
     <div class="task_search">
       <%= form.text_field :name, placeholder: t('action.name_search') %>　
       <%= form.select :status, ["未着手", "着手", "完了"], prompt: t('action.status_search') %>　
+      <%= form.select :label_id, @labels.pluck(:name), prompt: "ラベルから検索" %>
       <%= form.hidden_field :search, value: 'true' %>
       <%= form.submit "search" %>
     </div>
