@@ -65,3 +65,6 @@ RSpec.describe Task, type: :model do
     expect(Task.all.sort_prioritized).to eq Task.all.order(priority: :asc)
   end
 end
+
+# テスト
+# bin/rspec
