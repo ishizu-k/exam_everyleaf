@@ -18,7 +18,7 @@ class TasksController < ApplicationController
         @label_id = Label.where(name: params[:task][:label_id]).select("id")
         @labeling = Labeling.where(label_id: @label_id)
         @task_id = @labeling.pluck(:task_id)
-        @tasks = Task.where(id: @task_id).page(params[:page])
+        @tasks = current_user.tasks.where(id: @task_id).page(params[:page])
         # @tasks = Task.where("name LIKE ?", "%#{ params[:task][:label_id] }%")
       end
     end
