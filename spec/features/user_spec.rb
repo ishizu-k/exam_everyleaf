@@ -129,7 +129,14 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     end
 
     scenario "ユーザーの更新" do
+      # ログインする
+      visit new_session_path
+      fill_in 'メールアドレス', with: 'tanaka@example.com'
+      fill_in 'パスワード', with: '111111'
+      click_button 'Log in'
+      # 管理画面
       visit admin_users_path
+      save_and_open_page
       page.all("td")[3].click_link '編集'
       fill_in 'ユーザー名', with: 'sato'
       fill_in 'メールアドレス', with: 'sato@example.com'
