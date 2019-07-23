@@ -122,6 +122,33 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_content 'ラベル2'
     expect(page).to have_content 'ラベル3'
   end
+
+  scenario "ラベルからタスクを検索する" do
+    # タスク作成
+    visit new_task_path
+    fill_in 'タスク名', with: 'sample1'
+    fill_in 'タスク詳細', with: 'content'
+    fill_in '終了期限', with: '2019-07-25'
+    select '着手', from: 'ステータス'
+    select "高", from: '優先順位'
+    check 'task_label_ids_31'
+    click_button '新規作成'
+    visit new_task_path
+    fill_in 'タスク名', with: 'sample2'
+    fill_in 'タスク詳細', with: 'content'
+    fill_in '終了期限', with: '2019-08-25'
+    select '未着手', from: 'ステータス'
+    select "低", from: '優先順位'
+    check 'task_label_ids_32'
+    check 'task_label_ids_33'
+    click_button '新規作成'
+    # 検索
+    visit tasks_path
+    select 'ラベル1', from: 'task_label_id'
+    click_button 'search'
+    expect(page).to have_content 'sample1'
+    expect(page).to_not have_content 'sample2'
+  end
 end
 
 # テスト
