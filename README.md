@@ -26,7 +26,7 @@ heroku run rails db:migrate
 ## Table
 ### tasks table
 |column|type|
-|:--|--:|
+|:--|:--|
 |id|integer|
 |user_id|integer|
 |name|string|
@@ -37,20 +37,20 @@ heroku run rails db:migrate
 
 ### labelings table
 |column|type|
-|:--|--:|
+|:--|:--|
 |id|integer|
 |task_id|string|
 |label_id|string|
 
 ### labels table
 |column|type|
-|:--|--:|
+|:--|:--|
 |id|integer|
 |name|string|
 
 ### users table
 |column|type|
-|:--|--:|
+|:--|:--|
 |id|integer|
 |name|string|
 |email|string|
