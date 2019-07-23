@@ -1,5 +1,5 @@
 <div class="container">
-  <h3><%= t('action.edit') %></h3>
+  <h3><%= t('activerecord.models.user') %><%= t('action.edit') %></h3>
   <br>
 
   <%= form_with(model: @user, local: true, url: admin_user_path(@user.id) ) do |form| %>
@@ -31,10 +31,10 @@
         <td><%= form.password_field :password_confirmation %></td>
       </tr>
       <tr>
-        <th><%= form.label :admin, "管理者権限" %></th>
+        <th><%= form.label :admin, t("admin.user") %></th>
         <td>
-          <label><%= form.radio_button :admin, true %>　有り</label>　　
-          <label><%= form.radio_button :admin, false %>　無し</label>
+          <label><%= form.radio_button :admin, true %>　<%= t("admin.true") %></label>　　
+          <label><%= form.radio_button :admin, false %>　<%= t("admin.false") %></label>
         </td>
       </tr>
     </table>

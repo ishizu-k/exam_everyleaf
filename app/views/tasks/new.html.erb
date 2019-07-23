@@ -1,5 +1,5 @@
 <div class="container">
-  <h3><%= t('action.create') %></h3>
+  <h3><%= t('activerecord.models.task') %><%= t('action.create') %></h3>
   <br>
 
   <%= form_with(model: @task, local: true) do |form| %>
@@ -28,14 +28,14 @@
       </tr>
       <tr>
         <th class="col-md-2"><%= form.label :status, t("task.status") %></th>
-        <td><%= form.select :status, ["未着手", "着手", "完了"], prompt: "選択してください" %></td>
+        <td><%= form.select :status, ["未着手", "着手", "完了"], prompt: t("action.select") %></td>
       </tr>
       <tr>
         <th class="col-md-2"><%= form.label :priority, t("task.priority") %></th>
         <td><%= form.select :priority, Task.priorities_i18n.keys.map {|k| [Task.priorities_i18n[k], k]} %></td>
       </tr>
       <tr>
-        <th class="col-md-2">ラベル</th>
+        <th class="col-md-2"><%= t('activerecord.models.label') %></th>
         <td>
           <% Label.all.each do |label| %>
             <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>

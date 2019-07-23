@@ -24,7 +24,7 @@
         <td class="col-md-6"><%= @task.priority %></td>
       </tr>
       <tr>
-        <th class="col-md-2">ラベル</th>
+        <th class="col-md-2"><%= t('activerecord.models.label') %></th>
         <td class="col-md-6">
           <% @task.labels.each do |label| %>
             <%= label.name %>
