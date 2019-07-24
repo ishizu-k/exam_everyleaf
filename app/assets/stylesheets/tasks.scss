@@ -20,8 +20,25 @@ table tr {
 }
 
 .show_btn {
-  margin: 40px 220px;
+  margin: 40px 140px;
 }
 .row {
   width: 500px;
+}
+
+.show th {
+  color: #fff;
+  background-color: #8a8a8a;
+  border: solid 1px #fff;
+  padding-left: 2rem;
+  padding-right: 4rem;
+  border-radius: 8px;
+}
+
+.show td {
+  background-color: #f5f5f5;
+  border: solid 1px #fff;
+  padding-left: 2rem;
+  padding-right: 4rem;
+  border-radius: 8px;
 }
