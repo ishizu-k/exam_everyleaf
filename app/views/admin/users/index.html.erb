@@ -5,8 +5,8 @@
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
   <br>
-  <%= link_to t('admin.new_user'), new_admin_user_path %>
-  <%= link_to t('admin.new_label'), new_label_path %>
+  <%= link_to t('admin.new_user'), new_admin_user_path, class: 'btn btn-default' %>　
+  <%= link_to t('admin.new_label'), new_label_path, class: 'btn btn-default' %>
 
   <table class="table table-hover">
     <thead>
