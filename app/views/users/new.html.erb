@@ -1,6 +1,5 @@
 <div class="container">
   <h3>Sign up</h3>
-
   <%= form_with(model: @user, local: true) do |form| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
@@ -11,7 +10,6 @@
         </ul>
       </div>
     <% end %>
-
     <table>
       <tr>
         <th class="col-md-3"><%= form.label :name, t("user.name") %></th>

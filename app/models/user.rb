@@ -12,8 +12,6 @@ class User < ApplicationRecord
   private
 
   def need_at_least_one_admin
-    if User.where(admin: true).length == 1 && self.admin?
-      throw :abort
-    end
+    throw :abort if User.where(admin: true).length == 1 && self.admin?
   end
 end

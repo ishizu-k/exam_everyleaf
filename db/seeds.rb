@@ -62,7 +62,6 @@ end
 #   admin: "true"
 # )
 #
-#
 # Task.create!(
 #   name: "1番目のタスク",
 #   content: "1番目のタスクの内容",

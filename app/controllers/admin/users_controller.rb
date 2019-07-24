@@ -25,8 +25,7 @@ class Admin::UsersController < ApplicationController
     @tasks = @user.tasks.page(params[:page])
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)

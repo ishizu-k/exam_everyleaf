@@ -69,8 +69,6 @@ class TasksController < ApplicationController
   end
 
   def login_task
-    unless logged_in
-      redirect_to new_session_path
-    end
+    redirect_to new_session_path unless logged_in
   end
 end

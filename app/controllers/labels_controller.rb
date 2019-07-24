@@ -1,8 +1,4 @@
 class LabelsController < ApplicationController
-
-  def index
-  end
-
   def new
     @label = Label.new
   end
@@ -10,15 +6,6 @@ class LabelsController < ApplicationController
   def create
     Label.create(label_params)
     redirect_to admin_users_path
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

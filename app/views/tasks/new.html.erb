@@ -1,7 +1,6 @@
 <div class="container">
   <h3><%= t('activerecord.models.task') %><%= t('action.create') %></h3>
   <br>
-
   <%= form_with(model: @task, local: true) do |form| %>
     <% if @task.errors.any? %>
       <div id="error_explanation">
@@ -12,8 +11,7 @@
         </ul>
       </div>
     <% end %>
-
-    <table class="forms">
+    <table>
       <tr>
         <th class="col-md-2"><%= form.label :name, t("task.name") %></th>
         <td><%= form.text_field :name %></td>
