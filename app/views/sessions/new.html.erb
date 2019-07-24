@@ -1,18 +1,24 @@
-<h3>Log in</h3>
-<% flash.each do |key, value| %>
-  <%= content_tag(:div, value, class:"#{key}") %>
-<% end %>
+<div class="container">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class:"#{key}") %>
+  <% end %>
 
-<%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
-  <table>
-    <tr>
-      <th><%= form.label :email, t("user.email") %></th>
-      <td><%= form.email_field :email %></td>
-    </tr>
-    <tr>
-      <th><%= form.label :password, t("user.password") %></th>
-      <td><%= form.password_field :password %></td>
-    </tr>
-  </table>
-  <%= form.submit "Log in" %>
-<% end %>
+  <h3>Log in</h3>
+
+  <%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
+    <table>
+      <tr>
+        <th class="col-md-2"><%= form.label :email, t("user.email") %></th>
+        <td><%= form.email_field :email %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"><%= form.label :password, t("user.password") %></th>
+        <td><%= form.password_field :password %></td>
+      </tr>
+      <tr>
+        <th class="col-md-2"></th>
+        <td><br><%= form.submit "Log in", class: 'btn btn-default' %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

@@ -23,27 +23,36 @@ heroku run rails db:migrate
 - Ruby 2.6.3 
 - Rails 5.2.3
 
-## テーブル
-### usersテーブル
-- id（integer）
-- name（string）
-- email（string）
-- password_digest（string）
+## Table
+### tasks table
+|column|type|
+|:--|:--|
+|id|integer|
+|user_id|integer|
+|name|string|
+|content|string|
+|limit|date|
+|priority|string|
+|status|string|
 
-### tasksテーブル
-- id（integer）
-- user_id（integer）
-- name(string)
-- content（string）
-- limit（date）
-- priority（string）
-- status（string）
+### labelings table
+|column|type|
+|:--|:--|
+|id|integer|
+|task_id|string|
+|label_id|string|
 
-### task_labelsテーブル
-- id（integer）
-- task_id（integer）
-- label_id（integer）
+### labels table
+|column|type|
+|:--|:--|
+|id|integer|
+|name|string|
 
-### labelsテーブル
-- id（integer）
-- name（string）
+### users table
+|column|type|
+|:--|:--|
+|id|integer|
+|name|string|
+|email|string|
+|password_digest|string|
+|admin|boolean|

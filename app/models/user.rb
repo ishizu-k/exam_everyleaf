@@ -7,12 +7,11 @@ class User < ApplicationRecord
   validates :email, presence: true, length:  { maximum: 255 }, uniqueness: true,
    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :password, presence: true, length:  { minimum: 6 }
+  paginates_per 5
 
   private
 
   def need_at_least_one_admin
-    if User.where(admin: true).length == 1 && self.admin?
-      throw :abort
-    end
+    throw :abort if User.where(admin: true).length == 1 && self.admin?
   end
 end

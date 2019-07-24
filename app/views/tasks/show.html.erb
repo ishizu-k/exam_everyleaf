@@ -2,30 +2,30 @@
   <h3><%= t('task.content') %></h3>
   <br>
   <div class="row">
-    <table class="table table-bordered">
+    <table class="show">
       <tr>
-        <th class="col-md-2"><%= t("task.name") %></th>
-        <td class="col-md-6"><%= @task.name %></td>
+        <th><%= t("task.name") %></th>
+        <td><%= @task.name %></td>
       </tr>
       <tr>
-        <th class="col-md-2"><%= t("task.content") %></th>
-        <td class="col-md-6"><%= @task.content %></td>
+        <th><%= t("task.content") %></th>
+        <td><%= @task.content %></td>
       </tr>
       <tr>
-        <th class="col-md-2"><%= t("task.limit") %></th>
-        <td class="col-md-6"><%= @task.limit %></td>
+        <th><%= t("task.limit") %></th>
+        <td><%= @task.limit %></td>
       </tr>
       <tr>
-        <th class="col-md-2"><%= t("task.status") %></th>
-        <td class="col-md-6"><%= @task.status %></td>
+        <th><%= t("task.status") %></th>
+        <td><%= @task.status %></td>
       </tr>
       <tr>
-        <th class="col-md-2"><%= t("task.priority") %></th>
-        <td class="col-md-6"><%= @task.priority %></td>
+        <th><%= t("task.priority") %></th>
+        <td><%= @task.priority %></td>
       </tr>
       <tr>
-        <th class="col-md-2">ラベル</th>
-        <td class="col-md-6">
+        <th><%= t('activerecord.models.label') %></th>
+        <td>
           <% @task.labels.each do |label| %>
             <%= label.name %>
           <% end %>

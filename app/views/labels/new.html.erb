@@ -1,5 +1,5 @@
 <div class="container">
-  <h3><%= t('action.create') %></h3>
+  <h3><%= t('activerecord.models.label') %><%= t('action.create') %></h3>
   <br>
 
   <%= form_with(model: @label, local: true) do |form| %>
@@ -15,10 +15,8 @@
 
     <table class="new_create">
       <tr>
-        <th class="col-md-2"><%= form.label :name, "ラベル名" %></th>
+        <th class="col-md-2"><%= form.label :name, t('label.name') %></th>
         <td><%= form.text_field :name %></td>
-      </tr>
-      <tr>
     </table>
     <div class="new_btns">
       <%= link_to t('action.back'), admin_users_path, class: 'btn btn-default' %>　

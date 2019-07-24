@@ -1,33 +1,36 @@
-<h1>Sign up</h1>
-
-<%= form_with(model: @user, local: true) do |form| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="container">
+  <h3>Sign up</h3>
+  <%= form_with(model: @user, local: true) do |form| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <table>
+      <tr>
+        <th class="col-md-3"><%= form.label :name, t("user.name") %></th>
+        <td><%= form.text_field :name %></td>
+      </tr>
+      <tr>
+        <th class="col-md-3"><%= form.label :email, t("user.email") %></th>
+        <td><%= form.email_field :email %></td>
+      </tr>
+      <tr>
+        <th class="col-md-3"><%= form.label :password, t("user.password") %></th>
+        <td><%= form.password_field :password %></td>
+      </tr>
+      <tr>
+        <th class="col-md-3"><%= form.label :password_confirmation, t("user.password_confirmation") %></th>
+        <td><%= form.password_field :password_confirmation %></td>
+      </tr>
+      <tr>
+        <th class="col-md-3"></th>
+        <td><br><%= form.submit "Create account", class: 'btn btn-default' %></td>
+      </tr>
+    </table>
   <% end %>
-
-  <table>
-    <tr>
-      <th><%= form.label :name, t("user.name") %></th>
-      <td><%= form.text_field :name %></td>
-    </tr>
-    <tr>
-      <th><%= form.label :email, t("user.email") %></th>
-      <td><%= form.email_field :email %></td>
-    </tr>
-    <tr>
-      <th><%= form.label :password, t("user.password") %></th>
-      <td><%= form.password_field :password %></td>
-    </tr>
-    <tr>
-      <th><%= form.label :password_confirmation, t("user.password_confirmation") %></th>
-      <td><%= form.password_field :password_confirmation %></td>
-    </tr>
-  </table>
-  <%= form.submit "Create my account" %>
-<% end %>
+</div>
