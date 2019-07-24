@@ -1,7 +1,6 @@
 <div class="container">
-  <h3><%= t('action.edit') %></h3>
+  <h3><%= t('activerecord.models.task') %><%= t('action.edit') %></h3>
   <br>
-
   <%= form_with(model: @task, local: true) do |form| %>
     <% if @task.errors.any? %>
       <div id="error_explanation">

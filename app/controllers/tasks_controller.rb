@@ -3,15 +3,22 @@ class TasksController < ApplicationController
   before_action :login_task
 
   def index
+    @labels = Label.all
     if params[:task].nil?
       @tasks = current_user.tasks.task_index.page(params[:page])
     elsif params[:task][:search]
-      if params[:task][:name] && params[:task][:status].blank?
+      if params[:task][:name] && params[:task][:status].blank? && params[:task][:label_id].blank?
         @tasks = current_user.tasks.search_task_name(params[:task][:name]).page(params[:page])
-      elsif params[:task][:name].blank? && params[:task][:status]
+      elsif params[:task][:name].blank? && params[:task][:status] && params[:task][:label_id].blank?
         @tasks = current_user.tasks.search_status(params[:task][:status]).page(params[:page])
-      elsif params[:task][:name] && params[:task][:status]
+      elsif params[:task][:name] && params[:task][:status] && params[:task][:label_id].blank?
         @tasks = current_user.tasks.search_task_name(params[:task][:name]).search_status(params[:task][:status]).page(params[:page])
+      elsif params[:task][:name].blank? && params[:task][:status].blank? && params[:task][:label_id]
+        @label_id = Label.where(name: params[:task][:label_id]).select("id")
+        @labeling = Labeling.where(label_id: @label_id)
+        @task_id = @labeling.pluck(:task_id)
+        @tasks = current_user.tasks.where(id: @task_id).page(params[:page])
+        # @tasks = Task.where("name LIKE ?", "%#{ params[:task][:label_id] }%")
       end
     end
       @tasks = current_user.tasks.all.sort_expired.page(params[:page]) if params[:sort_expired]
@@ -54,7 +61,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content, :limit, :sort_expired, :status, :search, :priority, :sort_prioritized)
+    params.require(:task).permit(:name, :content, :limit, :sort_expired, :status, :search, :priority, :sort_prioritized, :label_id, label_ids:[])
   end
 
   def set_task
@@ -62,8 +69,6 @@ class TasksController < ApplicationController
   end
 
   def login_task
-    unless logged_in
-      redirect_to new_session_path
-    end
+    redirect_to new_session_path unless logged_in
   end
 end

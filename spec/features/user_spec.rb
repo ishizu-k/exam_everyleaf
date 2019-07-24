@@ -13,7 +13,7 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     fill_in 'メールアドレス', with: 'name@example.com'
     fill_in 'パスワード', with: '000000'
     fill_in '確認用パスワード', with: '000000'
-    click_button 'Create my account'
+    click_button 'Create account'
     # ログインしている
     expect(page).to have_content 'name'
     expect(page).to have_content 'name@example.com'
@@ -102,39 +102,79 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     end
 
     scenario "ユーザー一覧が表示される" do
+      # ログインする
+      visit new_session_path
+      fill_in 'メールアドレス', with: 'tanaka@example.com'
+      fill_in 'パスワード', with: '111111'
+      click_button 'Log in'
+      # 管理画面
       visit admin_users_path
       expect(page).to have_content 'ユーザー一覧'
     end
 
     scenario "ユーザーの新規作成" do
+      # ログインする
+      visit new_session_path
+      fill_in 'メールアドレス', with: 'tanaka@example.com'
+      fill_in 'パスワード', with: '111111'
+      click_button 'Log in'
+      # 管理画面
       visit new_admin_user_path
       fill_in 'ユーザー名', with: 'name'
       fill_in 'メールアドレス', with: 'name@example.com'
       fill_in 'パスワード', with: '111111'
       fill_in '確認用パスワード', with: '111111'
-      click_button 'Create'
+      click_button '新規作成'
       expect(page).to have_content 'name'
     end
 
     scenario "ユーザーの更新" do
+      # ログインする
+      visit new_session_path
+      fill_in 'メールアドレス', with: 'tanaka@example.com'
+      fill_in 'パスワード', with: '111111'
+      click_button 'Log in'
+      # 管理画面
       visit admin_users_path
       page.all("td")[3].click_link '編集'
       fill_in 'ユーザー名', with: 'sato'
       fill_in 'メールアドレス', with: 'sato@example.com'
       fill_in 'パスワード', with: '111111'
       fill_in '確認用パスワード', with: '111111'
-      click_button 'Edit'
+      click_button '編集'
       expect(page).to have_content '編集しました'
       expect(page).to have_content 'sato'
     end
 
     scenario "ユーザーの削除" do
+      # ログインする
+      visit new_session_path
+      fill_in 'メールアドレス', with: 'tanaka@example.com'
+      fill_in 'パスワード', with: '111111'
+      click_button 'Log in'
+      # 管理画面
       visit admin_users_path
-      page.all("td")[4].click_link '削除'
+      # 管理権限のあるユーザーを作成
+      visit new_admin_user_path
+      fill_in 'ユーザー名', with: 'name'
+      fill_in 'メールアドレス', with: 'name@example.com'
+      fill_in 'パスワード', with: '111111'
+      fill_in '確認用パスワード', with: '111111'
+      choose "有り"
+      click_button '新規作成'
+      # 削除する
+      visit admin_users_path
+      page.all("td")[14].click_link '削除'
       expect(page).to have_content '削除しました'
     end
 
     scenario "ユーザーごとに作成したタスク一覧が表示される" do
+      # ログインする
+      visit new_session_path
+      fill_in 'メールアドレス', with: 'tanaka@example.com'
+      fill_in 'パスワード', with: '111111'
+      click_button 'Log in'
+      # 管理画面
       visit admin_users_path
       page.all("td")[2].click_link '詳細'
       expect(page).to have_content 'tanakaさんのタスク一覧'

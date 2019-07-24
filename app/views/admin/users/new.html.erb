@@ -1,5 +1,5 @@
 <div class="container">
-  <h3><%= t('action.create') %></h3>
+  <h3><%= t('activerecord.models.user') %><%= t('action.create') %></h3>
   <br>
 
   <%= form_with(model: @user, local: true, url: admin_users_path ) do |form| %>
@@ -15,29 +15,31 @@
 
     <table>
       <tr>
-        <th><%= form.label :name, t("user.name") %></th>
+        <th class="col-md-3"><%= form.label :name, t("user.name") %></th>
         <td><%= form.text_field :name %></td>
       </tr>
       <tr>
-        <th><%= form.label :email, t("user.email") %></th>
+        <th class="col-md-3"><%= form.label :email, t("user.email") %></th>
         <td><%= form.email_field :email %></td>
       </tr>
       <tr>
-        <th><%= form.label :password, t("user.password") %></th>
+        <th class="col-md-3"><%= form.label :password, t("user.password") %></th>
         <td><%= form.password_field :password %></td>
       </tr>
       <tr>
-        <th><%= form.label :password_confirmation, t("user.password_confirmation") %></th>
+        <th class="col-md-3"><%= form.label :password_confirmation, t("user.password_confirmation") %></th>
         <td><%= form.password_field :password_confirmation %></td>
       </tr>
       <tr>
-        <th><%= form.label :admin, "管理者権限" %></th>
+        <th class="col-md-3"><%= form.label :admin, t("admin.user") %></th>
         <td>
-          <label><%= form.radio_button :admin, true %>　有り</label>　　
-          <label><%= form.radio_button :admin, false %>　無し</label>
+          <label><%= form.radio_button :admin, true %>　<%= t("admin.true") %></label>　　
+          <label><%= form.radio_button :admin, false %>　<%= t("admin.false") %></label>
         </td>
       </tr>
     </table>
-    <br>
-    <%= form.submit "Create" %>
+    <div class="new_btns">
+      <%= link_to t('action.back'), admin_users_path, class: 'btn btn-default' %>　
+      <%=form.submit t('action.create'), class: 'btn btn-default' %>
+    </div>
   <% end %>

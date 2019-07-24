@@ -9,6 +9,7 @@ ja:
     models:
       task: タスク
       user: ユーザー
+      label: ラベル
     attributes:
       task:
         name: タスク名
@@ -239,8 +240,15 @@ ja:
     password_confirmation: 確認用パスワード
     show: マイページ
   admin:
+    user: 管理権限
+    true: 有り
+    false: 無し
     list: ユーザー一覧
     show: さんのタスク一覧
+    new_user: ユーザー作成
+    new_label: ラベル作成
+  label:
+    name: ラベル名
   action:
     create: 新規作成
     show: 詳細
@@ -251,6 +259,8 @@ ja:
     login: ログイン
     name_search: タスク名から検索
     status_search: ステータスから検索
+    label_search: ラベルから検索
+    select: 選択
   sort:
     limit: 終了期限でソートする
     priority: 優先順位でソートする

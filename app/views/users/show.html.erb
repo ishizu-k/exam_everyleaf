@@ -1,4 +1,16 @@
-<h3><%= t('user.show') %></h3>
-<br>
-<p><%= t("user.name") %>：<%= @user.name %></p>
-<p><%= t("user.email") %>：<%= @user.email %></p>
+<div class="container">
+  <h3><%= t('user.show') %></h3>
+  <br>
+  <table class="show">
+    <tr>
+      <th><%= t("user.name") %></th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th><%= t("user.email") %></th>
+      <td><%= @user.email %></td>
+  </table>
+  <div class="show_btn">
+    <%= link_to t('action.back'), tasks_path, class: 'btn btn-default' %>　
+  </div>
+</div>
