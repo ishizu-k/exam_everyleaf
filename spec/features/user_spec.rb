@@ -13,7 +13,7 @@ RSpec.feature "ユーザー管理機能", type: :feature do
     fill_in 'メールアドレス', with: 'name@example.com'
     fill_in 'パスワード', with: '000000'
     fill_in '確認用パスワード', with: '000000'
-    click_button 'Create my account'
+    click_button 'Create account'
     # ログインしている
     expect(page).to have_content 'name'
     expect(page).to have_content 'name@example.com'
@@ -124,7 +124,7 @@ RSpec.feature "ユーザー管理機能", type: :feature do
       fill_in 'メールアドレス', with: 'name@example.com'
       fill_in 'パスワード', with: '111111'
       fill_in '確認用パスワード', with: '111111'
-      click_button 'Create'
+      click_button '新規作成'
       expect(page).to have_content 'name'
     end
 
@@ -141,7 +141,7 @@ RSpec.feature "ユーザー管理機能", type: :feature do
       fill_in 'メールアドレス', with: 'sato@example.com'
       fill_in 'パスワード', with: '111111'
       fill_in '確認用パスワード', with: '111111'
-      click_button 'Edit'
+      click_button '編集'
       expect(page).to have_content '編集しました'
       expect(page).to have_content 'sato'
     end
@@ -161,7 +161,7 @@ RSpec.feature "ユーザー管理機能", type: :feature do
       fill_in 'パスワード', with: '111111'
       fill_in '確認用パスワード', with: '111111'
       choose "有り"
-      click_button 'Create'
+      click_button '新規作成'
       # 削除する
       visit admin_users_path
       page.all("td")[14].click_link '削除'
