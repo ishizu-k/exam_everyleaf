@@ -4,7 +4,6 @@ class TasksController < ApplicationController
 
   def index
     @labels = Label.all
-    # binding.pry
     if params[:task].nil?
       @tasks = current_user.tasks.task_index.page(params[:page])
     elsif params[:task][:search]

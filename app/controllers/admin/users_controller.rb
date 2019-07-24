@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   before_action :admin_role
 
   def index
-    @users = User.all.includes(:tasks)
+    @users = User.all.includes(:tasks).page(params[:page])
   end
 
   def new
@@ -22,7 +22,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @tasks = @user.tasks
+    @tasks = @user.tasks.page(params[:page])
   end
 
   def edit
